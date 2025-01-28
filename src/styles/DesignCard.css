@@ -1,0 +1,22 @@
+.design-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    /* margin: 20px; */
+    text-align: center;
+  }
+  
+  .design-image {
+    max-width: 300px;
+    margin-bottom: 15px;
+  }
+  
+  .design-title {
+    font-size: 1.2rem;
+    /* margin-bottom: 10px; */
+  }
+  
+  .design-description {
+    font-size: 0.9rem;
+    color: #666;
+  }
