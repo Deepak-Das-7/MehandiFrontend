@@ -28,7 +28,7 @@ const Bookings: React.FC = () => {
   }
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-1">
       <ul className="list-group">
         {bookings.length > 0 ? (
           bookings.map((booking, index) => (

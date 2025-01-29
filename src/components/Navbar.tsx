@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import NavbarItem from './NavbarItem'; // Import NavbarItem component
 
 const Navbar: React.FC = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -8,16 +9,20 @@ const Navbar: React.FC = () => {
     setIsCollapsed((prev) => !prev);
   };
 
+  const handleLinkClick = () => {
+    setIsCollapsed(true);
+  };
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow-lg">
       <div className="container">
-        <Link className="navbar-brand text-white" to="/">
-          <strong>Indu Mehendi</strong>
+        <Link className="navbar-brand text-white fw-bold fs-2" to="/">
+          Indu Mehendi
         </Link>
         <button
           className="navbar-toggler"
           type="button"
-          onClick={handleToggle} // Trigger the toggle function on button click
+          onClick={handleToggle}
           aria-controls="navbarNav"
           aria-expanded={!isCollapsed ? 'true' : 'false'}
           aria-label="Toggle navigation"
@@ -26,37 +31,14 @@ const Navbar: React.FC = () => {
         </button>
 
         <div className={`collapse navbar-collapse ${isCollapsed ? '' : 'show'}`} id="navbarNav">
-          <ul className="navbar-nav ms-auto gap-1">
-            <li className="nav-item">
-              <Link className="nav-link px-3 text-white" to="/designs">
-                <i className="bi bi-images me-2"></i> Designs
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link px-3 text-white" to="/bookings">
-                <i className="bi bi-calendar-check me-2"></i> Appointments
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link px-3 text-white" to="/about">
-                <i className="bi bi-info-circle me-2"></i> About
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link px-3 text-white" to="/contact">
-                <i className="bi bi-telephone me-2"></i> Contact
-              </Link>
-            </li>
-            <li className="nav-item">
-              <button className="btn btn-outline-light ms-3" type="button">
-                Login
-              </button>
-            </li>
-            <li className="nav-item">
-              <button className="btn btn-light ms-2" type="button">
-                Signup
-              </button>
-            </li>
+          <ul className="navbar-nav ms-auto gap-2" style={{ alignItems: 'center' }}>
+            <NavbarItem to="/designs" iconClass="bi bi-images" label="Designs" onClick={handleLinkClick} />
+            <NavbarItem to="/bookings" iconClass="bi bi-calendar-check" label="Appointments" onClick={handleLinkClick} />
+            <NavbarItem to="/about" iconClass="bi bi-info-circle" label="About" onClick={handleLinkClick} />
+            <NavbarItem to="/contact" iconClass="bi bi-telephone" label="Contact" onClick={handleLinkClick} />
+            <NavbarItem to="/login" iconClass="bi bi-box-arrow-in-right" label="Login" onClick={handleLinkClick} />
+            <NavbarItem to="/register" iconClass="bi bi-person-plus" label="Signup" onClick={handleLinkClick} />
+            <NavbarItem to="/login" iconClass="bi bi-person-plus" label="Logout" onClick={handleLinkClick} />
           </ul>
         </div>
       </div>

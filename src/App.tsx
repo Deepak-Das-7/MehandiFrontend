@@ -14,22 +14,26 @@ import DesignDetail from './pages/Design/DesignDetail';
 const App: React.FC = () => {
   return (
     <Router>
-      <div className="app">
+      <div className="d-flex flex-column min-vh-100">
+        {/* Navbar */}
         <Navbar />
-        <main className="content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            
-            <Route path="/designs" element={<Designs />} />
-            <Route path="/designs/:id" element={<DesignDetail />} />
 
-            <Route path="/bookings" element={<Bookings />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-          </Routes>
+        {/* Main content area */}
+        <main className="flex-grow-1">
+          <div className="container py-4">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/designs" element={<Designs />} />
+              <Route path="/designs/:id" element={<DesignDetail />} />
+              <Route path="/bookings" element={<Bookings />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </Routes>
+          </div>
         </main>
+
         <Footer />
       </div>
     </Router>

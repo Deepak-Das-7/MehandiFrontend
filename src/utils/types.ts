@@ -9,8 +9,10 @@ export interface MehendiDesign {
     category: 'Bridal' | 'Arabic' | 'Floral' | 'Traditional' | 'Minimal';
     rating: number; // Rating of the design (out of 5)
     description: string; // Description of the design
+    feedback:{
+      feedbacks: Feedback[]
+    }; // Reference to the feedback model
   }
-  
   // Booking Model Type
   export interface Booking {
     _id: string; // Unique identifier for the booking
@@ -50,7 +52,7 @@ export interface MehendiDesign {
   // Feedback Model Type (for customer reviews)
   export interface Feedback {
     _id: string; // Unique identifier for the feedback
-    userId: string; // ID of the user who provided the feedback
+    user: User; // ID of the user who provided the feedback
     rating: number; // Rating (out of 5)
     comment: string; // Feedback comment
     createdAt: string; // Date the feedback was submitted
