@@ -35,7 +35,7 @@ export const BookingProvider: React.FC<{ children: ReactNode }> = ({ children })
   return (
     <BookingContext.Provider value={{ bookings, loading, error, fetchBookings: fetchBookingsFromAPI }}>
       {children}
-    </BookingContext.Provider>
+     </BookingContext.Provider>
   );
 };
 
