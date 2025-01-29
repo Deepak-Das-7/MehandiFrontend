@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
 const Register: React.FC = () => {
   const [name, setName] = useState('');

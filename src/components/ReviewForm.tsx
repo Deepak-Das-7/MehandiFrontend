@@ -9,8 +9,8 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit }) => {
   const [comment, setComment] = useState<string>('');
   const [error, setError] = useState<string>('');
 
-  const handleRatingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRating(Number(e.target.value));
+  const handleRatingChange = (newRating: number) => {
+    setRating(newRating);
   };
 
   const handleCommentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -33,20 +33,22 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit} className="review-form mb-3">
-      <h2>Leave a Review</h2>
+      <h2 className="mb-3">Leave a Review</h2>
 
       <div className="form-group mb-3">
         <label htmlFor="rating">Rating (1-5):</label>
-        <input
-          type="number"
-          id="rating"
-          name="rating"
-          min="1"
-          max="5"
-          value={rating}
-          onChange={handleRatingChange}
-          className="form-control" // Apply Bootstrap form control styling
-        />
+        <div className="d-flex">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <span
+              key={star}
+              className={`star fs-2 ${rating >= star ? 'text-warning' : 'text-muted'} me-2`}
+              onClick={() => handleRatingChange(star)}
+              style={{ cursor: 'pointer' }}
+            >
+              ★
+            </span>
+          ))}
+        </div>
       </div>
 
       <div className="form-group mb-3">
@@ -56,7 +58,8 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit }) => {
           name="comment"
           value={comment}
           onChange={handleCommentChange}
-          className="form-control" // Apply Bootstrap form control styling
+          className="form-control"
+          placeholder="Write your comment here..."
         />
       </div>
 
