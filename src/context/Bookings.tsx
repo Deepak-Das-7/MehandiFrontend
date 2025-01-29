@@ -3,10 +3,10 @@ import { fetchBookings } from '../api/booking'; // Import the correct function
 import { Booking } from '../utils/types'; // Assuming Booking type is defined in your types
 
 interface BookingContextType {
-  bookings: Booking[]; // Changed appointments to bookings
+  bookings: Booking[];
   loading: boolean;
   error: string | null;
-  fetchBookings: () => void; // Changed fetchAppointments to fetchBookings
+  fetchBookings: () => void;
 }
 
 const BookingContext = createContext<BookingContextType | undefined>(undefined);
@@ -29,7 +29,7 @@ export const BookingProvider: React.FC<{ children: ReactNode }> = ({ children })
   };
 
   useEffect(() => {
-    fetchBookingsFromAPI(); // Call the renamed function in useEffect
+    fetchBookingsFromAPI();
   }, []);
 
   return (

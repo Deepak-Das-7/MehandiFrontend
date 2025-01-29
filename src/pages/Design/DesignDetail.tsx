@@ -65,7 +65,7 @@ const DesignDetail: React.FC = () => {
         {/* Design Details */}
         <div className="col-md-8">
           <div className="card">
-            <img src={design.image} alt={design.name} className="card-img-top" />
+            <img src={'/logo512.png'} alt={design.name} className="card-img-top" />
             <div className="card-body">
               <h1 className="card-title">{design.name}</h1>
               <p className="card-text">{design.description}</p>
@@ -78,26 +78,18 @@ const DesignDetail: React.FC = () => {
         <div className="col-md-4">
           <div className="card mb-3">
             <div className="card-body">
-              <h2 className="card-title">Leave a Review</h2>
-              {/* Feedback Form */}
               <ReviewForm onSubmit={handleFeedbackSubmit} />
             </div>
           </div>
 
           <div className="card mb-3">
             <div className="card-body">
-              <h3 className="card-title">Feedbacks</h3>
-              {/* Feedbacks */}
               <Feedbacks feedbacks={feedbacks} />
             </div>
           </div>
 
-          <div className="card mb-3">
-            <div className="card-body">
-              <h3 className="card-title">Chat with Us</h3>
-              {/* Chatbox */}
+          <div >
               <ChatBox />
-            </div>
           </div>
         </div>
       </div>
