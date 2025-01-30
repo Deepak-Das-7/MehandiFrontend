@@ -6,20 +6,20 @@ import { Feedback } from '../../utils/types';
 
 interface TabSectionProps {
   activeTab: string;
-  designs: any[];
-  bookings: any[];
-  users: any[];
-  feedbacks: any[];
+  designs: any[]; // Ensure designs are always an array
+  bookings: any[]; // Ensure bookings are always an array
+  users: any[]; // Ensure users are always an array
+  feedbacks: any[]; // Ensure feedbacks are always an array
 }
 
 const ITEMS_PER_PAGE = 7;
 
 const TabSection: React.FC<TabSectionProps> = ({
   activeTab,
-  designs,
-  bookings,
-  users,
-  feedbacks
+  designs = [], // Default to empty array
+  bookings = [], // Default to empty array
+  users = [], // Default to empty array
+  feedbacks = [] // Default to empty array
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -83,7 +83,7 @@ const TabSection: React.FC<TabSectionProps> = ({
               Price: `₹${design.price}`,
               Rating: design.rating,
               Description: design.description,
-            }))} 
+            }))}
           />
           <Pagination>{generatePagination(designs.length)}</Pagination>
         </div>

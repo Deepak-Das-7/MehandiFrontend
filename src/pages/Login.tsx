@@ -1,12 +1,29 @@
 import React, { useState } from 'react';
+import { loginUser } from '../api/auth';
 
 const Login: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [error, setError] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Login successful!');
+    setError(''); // Reset error message
+    setLoading(true);
+
+    try {
+      const { token, user } = await loginUser(email, password); // Call the login API
+      localStorage.setItem('token', token); // Store token in local storage
+      localStorage.setItem('user', JSON.stringify(user)); // Store user info
+
+      // Redirect to the homepage/dashboard or any other action after successful login
+      alert('Login successful!');
+    } catch (err: any) {
+      setError(err.message); // Display error message if login fails
+    } finally {
+      setLoading(false); // Set loading to false once the API request is complete
+    }
   };
 
   return (
@@ -17,6 +34,7 @@ const Login: React.FC = () => {
         </h2>
         <div className="card-body">
           <form onSubmit={handleSubmit}>
+            {/* Email Input */}
             <div className="mb-4">
               <label htmlFor="email" className="form-label">
                 Email Address
@@ -31,6 +49,8 @@ const Login: React.FC = () => {
                 required
               />
             </div>
+
+            {/* Password Input */}
             <div className="mb-4">
               <label htmlFor="password" className="form-label">
                 Password
@@ -45,11 +65,18 @@ const Login: React.FC = () => {
                 required
               />
             </div>
+
+            {/* Error Message */}
+            {error && <div className="alert alert-danger">{error}</div>}
+
+            {/* Login Button */}
             <div className="d-flex justify-content-between align-items-center mb-3">
-              <button type="submit" className="btn btn-primary w-100 py-2">
-                Login
+              <button type="submit" className="btn btn-primary w-100 py-2" disabled={loading}>
+                {loading ? 'Logging in...' : 'Login'}
               </button>
             </div>
+
+            {/* Link to Register */}
             <div className="text-center">
               <small className="text-muted">
                 Don't have an account? <a href="/register">Sign up</a>
