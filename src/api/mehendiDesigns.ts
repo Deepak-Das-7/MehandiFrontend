@@ -2,6 +2,23 @@
 import axiosInstance from '../utils/axiosInstance'; // Import the axios instance
 import { MehendiDesign } from '../utils/types'; // The MehendiDesign type
 
+
+export const addDesign = async (designData: MehendiDesign): Promise<MehendiDesign> => {
+  try {
+    // Make the POST request to the backend
+    const response = await axiosInstance.post('/designs', designData);
+
+    if (response.status === 201) {
+      return response.data;
+    }
+
+    throw new Error("Failed to add design - Unexpected status code");
+  } catch (error: any) {
+    console.error("Error adding design:", error);
+    throw new Error(error?.response?.data?.message || "Failed to add design");
+  }
+};
+
 // Function to fetch all Mehendi Designs
 export const fetchAllDesigns = async (): Promise<MehendiDesign[]> => {
   try {

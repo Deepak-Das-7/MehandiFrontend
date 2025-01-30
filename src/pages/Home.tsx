@@ -1,7 +1,7 @@
 // src/pages/Home.tsx
 import React from 'react';
 import DesignCard from '../components/DesignCard';
-import BookingForm from '../components/BookingForm';
+import BookingForm from '../components/booking/BookingForm';
 import { useDesignContext } from '../context/DesignContext'; // Import the custom hook
 
 const Home: React.FC = () => {

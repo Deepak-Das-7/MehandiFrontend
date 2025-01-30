@@ -10,6 +10,8 @@ export interface MehendiDesign {
     rating: number; // Rating of the design (out of 5)
     description: string; // Description of the design
     feedback:{
+      _id: string; // Unique identifier for the feedback
+      design: string; // ID of the user who provided the feedback
       feedbacks: Feedback[]
     }; // Reference to the feedback model
   }

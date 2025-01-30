@@ -10,17 +10,13 @@ import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import DesignDetail from './pages/Design/DesignDetail';
+import Admin from './pages/Admin';
 
 const App: React.FC = () => {
   return (
     <Router>
       <div className="d-flex flex-column min-vh-100">
-        {/* Navbar */}
         <Navbar />
-
-        {/* Main content area */}
-        <main className="flex-grow-1">
-          <div className="container py-4">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/designs" element={<Designs />} />
@@ -30,10 +26,8 @@ const App: React.FC = () => {
               <Route path="/contact" element={<Contact />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/admin" element={<Admin />} />
             </Routes>
-          </div>
-        </main>
-
         <Footer />
       </div>
     </Router>

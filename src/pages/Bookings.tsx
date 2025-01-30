@@ -1,6 +1,6 @@
 import React from 'react';
 import { useBookingContext } from '../context/Bookings'; 
-import BookingCard from '../components/BookingCard';
+import BookingCard from '../components/booking/BookingCard';
 
 const Bookings: React.FC = () => {
   const { bookings, loading, error } = useBookingContext();

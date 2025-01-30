@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { postFeedback } from "../api/feedback"; // Import API function
-import { User } from "../utils/types";
+import { postFeedback } from "../../api/feedback"; // Import API function
+import { User } from "../../utils/types";
 
 interface ReviewFormProps {
   designId: string | undefined;
@@ -64,7 +64,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ designId, onSubmit }) => {
     try {
       // Call the postFeedback API function
       await postFeedback(rating, comment, user._id, designId);
-      alert("Thank you for your review!");
+      // alert("Thank you for your review!");
       setRating(0);  // Reset rating
       setComment(""); // Reset comment
 

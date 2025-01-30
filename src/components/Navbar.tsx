@@ -39,6 +39,7 @@ const Navbar: React.FC = () => {
             <NavbarItem to="/login" iconClass="bi bi-box-arrow-in-right" label="Login" onClick={handleLinkClick} />
             <NavbarItem to="/register" iconClass="bi bi-person-plus" label="Signup" onClick={handleLinkClick} />
             <NavbarItem to="/login" iconClass="bi bi-person-plus" label="Logout" onClick={handleLinkClick} />
+            <NavbarItem to="/admin" iconClass="bi bi-person-plus" label="Admin" onClick={handleLinkClick} />
           </ul>
         </div>
       </div>

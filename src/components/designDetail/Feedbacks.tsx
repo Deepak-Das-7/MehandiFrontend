@@ -1,5 +1,5 @@
 import React from 'react';
-import { Feedback } from '../utils/types';
+import { Feedback } from '../../utils/types';
 
 const Feedbacks: React.FC<{ feedbacks: Feedback[] }> = ({ feedbacks }) => {
   return (

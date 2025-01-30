@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'; // For accessing URL params
-import Feedbacks from '../../components/Feedbacks';
-import ChatBox from '../../components/ChatBox';
-import ReviewForm from '../../components/ReviewForm';
+import Feedbacks from '../../components/designDetail/Feedbacks';
+import ChatBox from '../../components/designDetail/ChatBox';
+import ReviewForm from '../../components/designDetail/ReviewForm';
 import { Feedback } from '../../utils/types';
 import { fetchDesignById } from '../../api/mehendiDesigns';
 
