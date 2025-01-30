@@ -20,12 +20,8 @@ const Register: React.FC = () => {
       const response = await registerUser(name, email, password, phone);
 
       // Destructuring response if needed
-      const { message, user, token } = response;
-
-      setSuccess(message); // Use the success message from response
-      localStorage.setItem('token', token); // Store token (or handle as needed)
+      setSuccess(response.message); // Use the success message from response
       
-      // You can log or process user data here if needed
 
     } catch (error: any) {
       setError(error.message || 'An error occurred during registration.');
