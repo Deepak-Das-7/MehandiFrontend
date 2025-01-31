@@ -11,7 +11,7 @@ const DesignDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [design, setDesign] = useState<any>(null);
   const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
-  
+
   // Adding loading and error states
   const [loading, setLoading] = useState<boolean>(true);  // Default loading is true
   const [error, setError] = useState<string | null>(null); // Default error is null
@@ -67,9 +67,9 @@ const DesignDetail: React.FC = () => {
   return (
     <div className="container mt-4">
       <div className="row">
-        <div className="col-md-4">
+        <div className="col-md-4 mb-4">
           <div className="card">
-            <img src={`/photos/${design.image}.png`} alt={design.name} className="card-img-top" style={{height:"50vh"}} />
+            <img src={`/photos/${design.image}.png`} alt={design.name} className="card-img-top" style={{ height: "50vh" }} />
             <div className="card-body">
               <h1 className="card-title">{design.name}</h1>
               <p className="card-text">{design.description}</p>
@@ -78,21 +78,20 @@ const DesignDetail: React.FC = () => {
           </div>
         </div>
         <div className="col-md-4">
-          <div>
-          <BookingForm />
+          <div className="card-body">
+            <BookingForm />
           </div>
           <div className="card-body">
-              <ReviewForm designId={id} onSubmit={refreshFeedbacks} />
+            <ReviewForm designId={id} onSubmit={refreshFeedbacks} />
           </div>
           <div>
             <ChatBox />
           </div>
         </div>
         <div className="col-md-4">
-            <div className="card-body">
-              <Feedbacks feedbacks={feedbacks} />
-            </div>
-            
+          <div className="card-body">
+            <Feedbacks feedbacks={feedbacks} />
+          </div>
         </div>
       </div>
     </div>

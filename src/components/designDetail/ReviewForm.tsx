@@ -78,16 +78,16 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ designId, onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit} className="review-form mb-4 shadow-lg p-4 rounded bg-light">
-      <h3 className="mb-4 text-center text-primary">Leave a Review</h3>
+      <h3 className="mb-2 text-center text-primary">Leave a Review</h3>
 
       {/* Rating Section */}
-      <div className="form-group mb-4 d-flex align-items-center gap-3">
-        <label htmlFor="rating" className="fs-5 text-muted">Rating (1-5):</label>
+      <div className="form-group mb-2 d-flex align-items-center gap-2">
+        <label htmlFor="rating" className="fs-6 text-muted">Rating (1-5):</label>
         <div className="d-flex">
           {[1, 2, 3, 4, 5].map((star) => (
             <span
               key={star}
-              className={`star fs-2 ${rating >= star ? "text-warning" : "text-muted"} me-2`}
+              className={`star fs-5 ${rating >= star ? "text-warning" : "text-muted"} me-1`}
               onClick={() => handleRatingChange(star)} // Disable clicks while loading
               style={{ cursor: "pointer", transition: "color 0.2s" }}
             >
@@ -98,28 +98,27 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ designId, onSubmit }) => {
       </div>
 
       {/* Comment Section */}
-      <div className="form-group mb-4">
-        <label htmlFor="comment" className="fs-5 text-muted">Comment:</label>
+      <div className="form-group mb-2">
         <textarea
           id="comment"
           name="comment"
           value={comment}
           onChange={handleCommentChange}
-          className="form-control p-3 border-2 border-primary rounded-3 shadow-sm"
+          className="form-control p-3 border-1 border-primary rounded-2 shadow-sm"
           placeholder="Write your comment here..."
-          rows={5}
+          rows={3}
           disabled={loading} // Disable textarea while submitting
         />
       </div>
 
       {/* Error Message */}
-      {error && <p className="text-danger text-center mb-3">{error}</p>}
+      {error && <p className="text-danger text-center mb-2">{error}</p>}
 
       {/* Submit Button */}
       <div className="d-flex justify-content-center">
         <button
           type="submit"
-          className="btn btn-primary px-4 py-2 fs-5"
+          className="w-100 py-2 rounded-pill shadow-sm btn btn-primary"
           disabled={loading}
           style={{
             transition: "background-color 0.2s",
