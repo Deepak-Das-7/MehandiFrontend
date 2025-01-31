@@ -4,7 +4,6 @@ import FilterBox from '../../components/FilterBox';
 import DesignCard from '../../components/DesignCard';
 import { useDesignContext } from '../../context/DesignContext';
 import { MehendiDesign } from '../../utils/types';
-import { Link } from 'react-router-dom';
 
 const Designs: React.FC = () => {
   const { designs, loading, error } = useDesignContext(); // Access designs and loading from context
@@ -55,9 +54,7 @@ const Designs: React.FC = () => {
           {filteredDesigns.length > 0 ? (
             filteredDesigns.map((design) => (
               <Col key={design._id} xs={6} sm={6} md={4} lg={3} xl={2} >
-                {/* <Link to={`/designs/${design._id}`} style={{ textDecoration: 'none' }}> */}
                   <DesignCard {...design} />
-                {/* </Link> */}
               </Col>
             ))
           ) : (
