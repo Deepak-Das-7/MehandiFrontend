@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import NavbarItem from './NavbarItem'; // Import NavbarItem component
+import NavbarItem from './NavbarItem';
 
 const Navbar: React.FC = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -16,8 +16,8 @@ const Navbar: React.FC = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow-lg">
       <div className="container">
-        <Link className="navbar-brand text-white fw-bold fs-2" to="/">
-          Indu Mehendi
+        <Link className="navbar-brand text-white fw-bold " to="/">
+          <img src="/pngs/whiteLogo.png" alt="Logo" width={60} height={50} />
         </Link>
         <button
           className="navbar-toggler"
@@ -38,8 +38,9 @@ const Navbar: React.FC = () => {
             <NavbarItem to="/contact" iconClass="bi bi-telephone" label="Contact" onClick={handleLinkClick} />
             <NavbarItem to="/login" iconClass="bi bi-box-arrow-in-right" label="Login" onClick={handleLinkClick} />
             <NavbarItem to="/register" iconClass="bi bi-person-plus" label="Signup" onClick={handleLinkClick} />
-            <NavbarItem to="/login" iconClass="bi bi-person-plus" label="Logout" onClick={handleLinkClick} />
-            <NavbarItem to="/admin" iconClass="bi bi-person-plus" label="Admin" onClick={handleLinkClick} />
+            {/* Logout and Admin can be conditionally rendered */}
+            <NavbarItem to="/logout" iconClass="bi bi-box-arrow-right" label="Logout" onClick={handleLinkClick} />
+            <NavbarItem to="/admin" iconClass="bi bi-person-badge" label="Admin" onClick={handleLinkClick} />
           </ul>
         </div>
       </div>

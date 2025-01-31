@@ -55,9 +55,9 @@ const Designs: React.FC = () => {
           {filteredDesigns.length > 0 ? (
             filteredDesigns.map((design) => (
               <Col key={design._id} xs={6} sm={6} md={4} lg={3} xl={2} >
-                <Link to={`/designs/${design._id}`} style={{ textDecoration: 'none' }}>
+                {/* <Link to={`/designs/${design._id}`} style={{ textDecoration: 'none' }}> */}
                   <DesignCard {...design} />
-                </Link>
+                {/* </Link> */}
               </Col>
             ))
           ) : (

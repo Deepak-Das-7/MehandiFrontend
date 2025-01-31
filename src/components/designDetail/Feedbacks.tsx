@@ -1,27 +1,35 @@
 import React from 'react';
 import { Feedback } from '../../utils/types';
+import { FaUserCircle } from 'react-icons/fa';
 
 const Feedbacks: React.FC<{ feedbacks: Feedback[] }> = ({ feedbacks }) => {
   return (
-    <div className="feedbacks mt-1">
+    <div className="feedbacks mt-2">
       {feedbacks.length > 0 ? (
         feedbacks.map((feedback, index) => (
-          <div key={index} className="feedback card mb-1 shadow-sm">
-            <div className="card-body">
-              <div className="d-flex justify-content-between align-items-center">
-                <p className="card-title mb-1 text-primary">
-                  <strong style={{fontSize:"0.9rem"}}>{feedback.user.name}</strong>
-                </p>
-                <span className="text-muted" style={{ fontSize: "0.7rem" }}>
-                  {new Date(feedback.createdAt).toLocaleString()}
-                </span>
+          <div 
+            key={index} 
+            className="feedback shadow-sm p-2 border rounded bg-white mb-1 d-flex flex-column"
+            style={{ borderLeft: "3px solid #007bff", fontSize: "0.8rem" }}
+          >
+            <div className="d-flex justify-content-between align-items-center">
+              <div className="d-flex align-items-center">
+                <FaUserCircle className="text-secondary me-2 fs-5 mb-1" />
+                <span className="fw-semibold text-primary">{feedback.user.name}</span>
               </div>
-              <p className="card-text" style={{fontSize:"0.8rem"}}>{feedback.comment}</p>
+              <span className="text-muted small">
+                {new Date(feedback.createdAt).toLocaleString()}
+              </span>
             </div>
+            <p className="text-secondary mb-0 small" style={{ lineHeight: "1.2" }}>
+              {feedback.comment}
+            </p>
           </div>
         ))
       ) : (
-        <div className="alert alert-info text-center">No feedbacks yet.</div>
+        <div className="alert alert-info text-center fw-bold p-2 small">
+          No feedbacks yet.
+        </div>
       )}
     </div>
   );

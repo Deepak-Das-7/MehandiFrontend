@@ -5,6 +5,7 @@ import ChatBox from '../../components/designDetail/ChatBox';
 import ReviewForm from '../../components/designDetail/ReviewForm';
 import { Feedback } from '../../utils/types';
 import { fetchDesignById } from '../../api/mehendiDesigns';
+import BookingForm from '../../components/booking/BookingForm';
 
 const DesignDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -66,10 +67,9 @@ const DesignDetail: React.FC = () => {
   return (
     <div className="container mt-4">
       <div className="row">
-        {/* Design Details */}
-        <div className="col-md-8">
+        <div className="col-md-4">
           <div className="card">
-            <img src={'/logo512.png'} alt={design.name} className="card-img-top" />
+            <img src={`/photos/${design.image}.png`} alt={design.name} className="card-img-top" style={{height:"50vh"}} />
             <div className="card-body">
               <h1 className="card-title">{design.name}</h1>
               <p className="card-text">{design.description}</p>
@@ -77,18 +77,22 @@ const DesignDetail: React.FC = () => {
             </div>
           </div>
         </div>
-
-        {/* Sidebar - Feedback Form, Feedbacks, and Chatbox */}
         <div className="col-md-4">
-            <div className="card-body">
-              <Feedbacks feedbacks={feedbacks} />
-            </div>
-            <div className="card-body">
+          <div>
+          <BookingForm />
+          </div>
+          <div className="card-body">
               <ReviewForm designId={id} onSubmit={refreshFeedbacks} />
           </div>
           <div>
             <ChatBox />
           </div>
+        </div>
+        <div className="col-md-4">
+            <div className="card-body">
+              <Feedbacks feedbacks={feedbacks} />
+            </div>
+            
         </div>
       </div>
     </div>
