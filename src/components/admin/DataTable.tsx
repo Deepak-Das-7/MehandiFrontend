@@ -21,7 +21,7 @@ const DataTable: React.FC<DataTableProps> = ({ data, columns }) => {
         {data.map((row, index) => (
           <tr key={index}>
             {columns.map((col) => (
-              <td key={col}>{row[col]}</td>
+              <td key={col} className="small">{row[col]}</td>
             ))}
             <td>
               <Button variant="outline-primary" size="sm">Edit</Button>{" "}

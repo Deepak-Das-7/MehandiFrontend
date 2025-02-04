@@ -1,9 +1,8 @@
 import axios from 'axios';
 
+const baseURL = process.env.REACT_APP_API_URL;
 const axiosInstance = axios.create({
-  // baseURL: 'http://localhost:5000/api',
-  // baseURL: 'http://192.168.31.161:5000/api',
-  baseURL: 'https://mehendibackend.onrender.com/api',
+  baseURL : baseURL,
   headers: {
     'Content-Type': 'application/json',
   },

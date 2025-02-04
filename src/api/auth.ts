@@ -47,7 +47,7 @@ export const loginUser = async (email: string, password: string): Promise<LoginR
 // Function to get user profile
 export const getUserProfile = async (): Promise<User> => {
   try {
-    const token = localStorage.getItem('token'); // Assuming the token is saved in localStorage
+    const token = localStorage.getItem('token');
 
     if (!token) {
       throw new Error('No token found, please log in again.');
@@ -70,25 +70,32 @@ export const getUserProfile = async (): Promise<User> => {
   }
 };
 
-// Function to update user profile
+// Function to update user profile with all fields
 export const updateUserProfile = async (
+  _id: string, // User ID to identify the user
   name: string,
   email: string,
-  phone: string
+  phone: string,
 ): Promise<User> => {
   try {
-    const token = localStorage.getItem('token'); // Assuming the token is saved in localStorage
-
+    const token = localStorage.getItem('token'); // Retrieve the token from localStorage
+    if (!_id) {
+      throw new Error('No user found, please log in again.');
+    }
     if (!token) {
       throw new Error('No token found, please log in again.');
     }
 
-    const response = await axiosInstance.put('/auth/profile', { name, email, phone }, {
-      headers: {
-        Authorization: `Bearer ${token}`, // Attach the token in the Authorization header
-      },
-    });
+    // Make the API request to update the profile
+    const response = await axiosInstance.put('/auth/profile', 
+      { _id, name, email, phone }, 
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, // Attach the token in the Authorization header
+        },
+      });
 
+    // If successful, return the updated user data
     if (response.status === 200) {
       return response.data; // Return updated user data
     }

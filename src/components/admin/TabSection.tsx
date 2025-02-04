@@ -82,9 +82,10 @@ const TabSection: React.FC<TabSectionProps> = ({
               Category: design.category,
               Price: `₹${design.price}`,
               Rating: design.rating,
-              Description: design.description,
+              Description: design.description.length > 100 ? design.description.substring(0, 100) + "..." : design.description
             }))}
           />
+
           <Pagination>{generatePagination(designs.length)}</Pagination>
         </div>
       );
@@ -95,8 +96,8 @@ const TabSection: React.FC<TabSectionProps> = ({
             columns={["Customer", "Booking Date", "Booking Time", "Design", "Status"]}
             data={paginateData(bookings).map((booking) => ({
               Customer: booking.customer.name,
-              "Booking Date": booking.bookingDate,
-              "Booking Time": booking.bookingTime,
+              "Booking Date": new Date(booking.bookingDate).toLocaleDateString(), // Fixed typo here
+              "Booking Time": new Date(booking.bookingDate).toLocaleTimeString(), // Fixed typo here
               Design: booking.designId.name,
               Status: booking.status,
             }))}

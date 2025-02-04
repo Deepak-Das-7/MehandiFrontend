@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="footer bg-dark text-light py-4">
+    <footer className="footer bg-dark text-light py-4 margin-top-4" style={{ marginTop: '2rem' }}>
       <div className="container">
         <div className="row">
           <div className="col-12 text-center mb-3">

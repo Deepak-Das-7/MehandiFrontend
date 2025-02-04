@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useLoggedUserContext } from "../../context/Auth";
 
 const ChatBox: React.FC = () => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<{ name: string; text: string; createdAt: string }[]>([]);
-  const [userName, setUserName] = useState("John Doe");
+  const { user } = useLoggedUserContext();
+  const [userName] = useState(user?.name || "User");
 
-  useEffect(() => {
-    const storedName = localStorage.getItem("userName") || "John Doe";
-    setUserName(storedName);
-  }, []);
 
   const handleSendMessage = () => {
     if (message.trim()) {

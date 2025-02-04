@@ -28,12 +28,12 @@ export interface MehendiDesign {
   export interface User {
     _id: string; // Unique identifier for the user
     email: string; // User email
-    password: string; // User password (hashed)
     name: string; // User's full name
     phone: string; // User's phone number
     isAdmin: boolean; // Role of the user
-    createdAt: string; // Date the user account was created
-    updatedAt: string; // Date the user account was last updated
+    password?: string; // User password (hashed)
+    createdAt?: string; // Date the user account was created
+    updatedAt?: string; // Date the user account was last updated
   }
   
   export interface AuthResponse {

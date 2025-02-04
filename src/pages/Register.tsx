@@ -18,11 +18,7 @@ const Register: React.FC = () => {
 
     try {
       const response = await registerUser(name, email, password, phone);
-
-      // Destructuring response if needed
       setSuccess(response.message); // Use the success message from response
-      
-
     } catch (error: any) {
       setError(error.message || 'An error occurred during registration.');
     } finally {
@@ -31,83 +27,93 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="container mt-5 mb-5">
-      <div className="card mx-auto shadow-lg border-0" style={{ maxWidth: '450px' }}>
-        <h2 className="card-header bg-primary text-white text-center py-3">
-          <strong>Register</strong>
-        </h2>
-        <div className="card-body">
-          <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label htmlFor="name" className="form-label fs-5">
-                Full Name
-              </label>
-              <input
-                type="text"
-                className="form-control py-2"
-                id="name"
-                placeholder="Enter your name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="email" className="form-label fs-5">
-                Email address
-              </label>
-              <input
-                type="email"
-                className="form-control py-2"
-                id="email"
-                placeholder="Enter email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="password" className="form-label fs-5">
-                Password
-              </label>
-              <input
-                type="password"
-                className="form-control py-2"
-                id="password"
-                placeholder="Enter password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="phone" className="form-label fs-5">
-                Phone (optional)
-              </label>
-              <input
-                type="text"
-                className="form-control py-2"
-                id="phone"
-                placeholder="Enter phone number"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
-            </div>
-            <button 
-              type="submit" 
-              className="btn btn-primary w-100 py-2 rounded-pill mt-3 shadow-sm"
-              disabled={loading}
-            >
-              {loading ? 'Registering...' : 'Register'}
-            </button>
-          </form>
-
-          {error && <div className="mt-3 alert alert-danger">{error}</div>}
-          {success && <div className="mt-3 alert alert-success">{success}</div>}
-
-          <div className="text-center mt-3">
-            <p className="mb-0">Already have an account? <a href="/login" className="text-decoration-none text-primary">Login</a></p>
+    <div className="d-flex justify-content-center align-items-center" >
+      <div
+        className="card shadow-lg border-0 p-4 text-center"
+        style={{
+          width: '100%',
+          borderRadius: '20px',
+          maxWidth: '600px',
+        }}
+      >
+        <h3 className="text-primary fw-bold mb-3">Create Account</h3>
+        {error && <div className="alert alert-danger py-2">{error}</div>}
+        {success && <div className="alert alert-success py-2">{success}</div>}
+        <form onSubmit={handleSubmit}>
+          {/* Full Name Field */}
+          <div className="input-group mb-3">
+            <input
+              type="text"
+              className="form-control border-light shadow-sm"
+              placeholder="Full Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
           </div>
+
+          {/* Email Field */}
+          <div className="input-group mb-3">
+            <input
+              type="email"
+              className="form-control border-light shadow-sm"
+              placeholder="Enter email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          {/* Password Field */}
+          <div className="input-group mb-3">
+            <input
+              type="password"
+              className="form-control border-light shadow-sm"
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          {/* Phone Field */}
+          <div className="input-group mb-3">
+            <input
+              type="text"
+              className="form-control border-light shadow-sm"
+              placeholder="Phone (optional)"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </div>
+
+          {/* Register Button */}
+          <button
+            type="submit"
+            className="btn btn-primary w-100 py-2 rounded-pill fw-bold shadow-sm"
+            disabled={loading}
+            style={{
+              transition: '0.3s ease-in-out',
+              background: 'linear-gradient(135deg, #667eea, #764ba2)',
+              border: 'none',
+            }}
+          >
+            {loading ? (
+              <span className="spinner-border spinner-border-sm"></span>
+            ) : (
+              'Register'
+            )}
+          </button>
+        </form>
+
+        {/* Login Link */}
+        <div className="text-center mt-3">
+          <small className="text-black">
+            Already have an account?{' '}
+            <a href="/login" className="text-decoration-none text-dark fw-bold">
+              Login
+            </a>
+          </small>
         </div>
       </div>
     </div>
